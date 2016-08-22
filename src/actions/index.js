@@ -1,14 +1,12 @@
+import axios from 'axios';
+
 import { FETCH_USERS } from './types';
 
-let dummyData = [
-        { name: 'user1' },
-        { name: 'user2' },
-        { name: 'user3' }
-    ];
-
 export function fetchUsers() {
+    // ajax request with axios
+    const REQUEST = axios.get('https://jsonplaceholder.typicode.com/users');
     return {
         type: FETCH_USERS,
-        payload: dummyData
+        payload: REQUEST
     };
 }
