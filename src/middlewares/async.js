@@ -4,6 +4,12 @@ export default function({dispatch}) {
         if (!action.payload || !action.payload.then) {
             return next(action);
         }
-        next(action);
+        // make sure the actions promise resolves
+        action.payload.then((response) => {
+            // create a new action with the old data but replace promise with response data
+            const NEW_ACTION = { ...action, payload: response };
+            // dispatch the new action and send through all the middleware again
+            dispatch(NEW_ACTION);
+        });
     };
 }
