@@ -12,7 +12,7 @@ class UserList extends React.Component {
     
     _renderUser(user) {
         return (
-            <div className="col-md-4">
+            <div className="col-md-4" key={user.id}>
             <div className="card card-block">
                 <h4 className="card-title">{user.name}</h4>
                 <p className="card-text">Company</p>
